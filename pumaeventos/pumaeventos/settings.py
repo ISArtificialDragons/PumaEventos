@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     #Aplicaciones
     'Home',
+    'Eventos',
+    'Usuarios',
 ]
 
 MIDDLEWARE = [
