@@ -1,5 +1,7 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
+from .models import Usuarios
 
-def index(request):
-    return HttpResponse("Estamos listos para comenzar :)")
+#Home page
+def home_page(request):
+    return render(request,'Home/Bienvenida.html')
