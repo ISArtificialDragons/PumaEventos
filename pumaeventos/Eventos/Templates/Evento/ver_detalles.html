@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="{% static 'Evento/css/crea_evento.css' %}">
-<a href="{% url 'Home:index' %}">Pagina Principal</a>
+<!--Falta agregar el href para que regrese a la pagina principal -->
+<a href="{% url 'Eventos:index' %}">Pagina Principal</a>
 <div id="crear_evento" class="center">
     <form method="post" enctype="multipart/form-data">
     </form>
@@ -33,13 +34,13 @@
       <td></td>
     </tr>
     <tr>
-      <td>Inicio</td>
+      <td>Inicio: Fecha/Hora</td>
       <td>Fecha y hora de inicio</td>
     </tr>
   </tbody>
   <tbody>
     <tr>
-      <td>Fin</td>
+      <td>Fin: Fecha/Hora</td>
       <td>Fech y hora de finalizacion</td>
     </tr>
   </tbody>

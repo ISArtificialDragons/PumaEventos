@@ -25,6 +25,8 @@ class Evento(models.Model):
     cupo = models.IntegerField(null=True)
     fecha_inicio_evento = models.DateTimeField(default=django.utils.timezone.now,null=False)
     fecha_fin_evento = models.DateTimeField(default=django.utils.timezone.now,null=False)
+    hora_inicio_evento = models.TimeField(default=django.utils.timezone.now,null=False)
+    hora_fin_evento = models.TimeField(default=django.utils.timezone.now,null=False)
 
     def __str__(self):
         return self.nombre_evento

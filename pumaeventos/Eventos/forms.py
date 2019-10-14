@@ -10,3 +10,5 @@ class EventoForm(forms.Form):
     cupo = forms.IntegerField(label='cupo', max_length=100)
     fecha_inicio_evento = forms.DateTimeField(default=django.utils.timezone.now,null=False)
     fecha_fin_evento = forms.DateTimeField(default=django.utils.timezone.now,null=False)
+    hora_inicio_evento = forms.TimeField(default=django.utils.timezone.now,null=False)
+    hora_fin_evento = forms.TimeField(default=django.utils.timezone.now,null=False)
