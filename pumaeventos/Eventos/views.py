@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
+
+from .models import Eventos
+from .forms import EventoForm
+
 
 # Create your views here.
 
@@ -39,6 +43,8 @@ class CrearEvento(View):
                 cupo = form.cleaned_data['cupo'],
                 fecha_inicio_evento = form.cleaned_data['fecha_inicio_evento'],
                 fecha_fin_evento = form.cleaned_data['fecha_fin_evento'],
+                hora_inicio_evento = form.cleaned_data['hora_inicio_evento'],
+                hora_fin_evento = form.cleaned_data['hora_fin_evento'],
             )
             nuevo_evento.save()
             return redirect('Evento:evento_creado')
@@ -81,6 +87,7 @@ class EditarEvento(View):
 
         self.context['form'] = form
         return render(request, self.template, self.context)
+
 class VerDetalles(View):
     """
         Pagina para editar un evento.
@@ -91,5 +98,18 @@ class VerDetalles(View):
     def get(self, request):
         """
             Get in Ver detalles de un e.
+        """
+        return render(request, self.template, self.context)
+
+class EventoCreado(View):
+    """
+        Esta vista se despliega cuando un evento se crea
+    """
+    template = 'Evento/evento_creado.html'
+    context = {'title': 'Evento creado existosamente!!!'}
+
+    def get(self, request):
+        """
+            GET el evento creado
         """
         return render(request, self.template, self.context)
