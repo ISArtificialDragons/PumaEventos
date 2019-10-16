@@ -30,5 +30,8 @@ class Usuario(models.Model):
     entidad_academica_usuario = models.CharField(max_length=100)
     foto_usuario = models.TextField(help_text='se usara ImageField')
 
+    class Meta:
+        ordering = ['nombre_usuario']
+
     def __str__(self):
         return self.nombre_usuario
