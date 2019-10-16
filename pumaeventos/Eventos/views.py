@@ -18,4 +18,7 @@ def crear_evento(request):
 
 def editar_evento(request):
     if request.method=='POST':
-        
+        evento_form = EventoForm(request.POST)
+        if evento_form.is_valid():
+            evento_form.save()
+            return render(request, "Evento/IHEditarEvento.html")

@@ -28,5 +28,8 @@ class Evento(models.Model):
     hora_inicio_evento = models.TimeField(default=django.utils.timezone.now,null=False)
     hora_fin_evento = models.TimeField(default=django.utils.timezone.now,null=False)
 
+    class Meta:
+        ordering = ['nombre_evento']
+
     def __str__(self):
         return self.nombre_evento
