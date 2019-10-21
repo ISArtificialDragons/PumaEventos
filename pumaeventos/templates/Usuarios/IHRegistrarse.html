@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Registrase</title>
-</head>
-<body>
-  <form method = "POST">
-    {% csrf_token %}
+{% extends 'base.html' %}
+{% block titulo %}
+  Registro de Usuario
+{% endblock titulo %}
+{% block body %}
+<form method="POST">
+  {% csrf_token %}
+  {% if error %}
+    <h2>{{ error }}</h2>
+  {% else %}
     {{ usuario_form.as_p }}
-      <button type = "submit"> Regristrar </button>
-  </form>
-</body>
+    <button type = "submit"> Regristrar </button>
+  {% endif %}
 
-</html>
+</form>
+{% endblock body %}
