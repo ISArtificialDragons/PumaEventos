@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 
-from .models import Eventos
+from .models import Evento
 from .forms import EventoForm
 
 
@@ -48,4 +48,4 @@ def detalles_evento(request):
     evento = get_object_or_404(Evento, pk=pk)
     if request.method == "POST":
         evento_form = EventoForm(request.POST, instance=evento)
-        return redirect('Evento/IHVerDetallesEvento.html', pk=evento.pk
+        return redirect('Evento/IHVerDetallesEvento.html', pk=evento.pk)
