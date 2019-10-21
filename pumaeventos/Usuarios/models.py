@@ -11,7 +11,7 @@ class Usuario(models.Model):
     bio = models.CharField(max_length=255, blank=True)
     web = models.URLField(blank=True)
     id_evento = models.CharField(max_length=100)
-    nombre_usuario = models.CharField(max_length=150, unique=True)
+    nombre_usuario = models.CharField(max_length=150)
     contraseña_usuario = models.CharField(max_length=40)
     confirmacion_usuario = models.BooleanField(default=False)
     statf = models.BooleanField(default=False)
