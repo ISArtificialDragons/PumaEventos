@@ -1,4 +1,4 @@
-import django
+ import django
 from django.db import models
 
 # Create your models here.
@@ -17,14 +17,19 @@ Nota;arroja un error en la migracion por los cambios a los modelos.
 
 
 class Evento(models.Model):
+
     id_evento = models.CharField(max_length=100, primary_key=True, unique=True)
     id_organizador = models.CharField(max_length=100)
     nombre_evento = models.CharField(max_length=100)
-    ubicacion = models.TextField(help_text='Especifica Ubiacion')
-    detalles_evento = models.TextField(help_text='Especifica detalles')
-    cupo = models.IntegerField(null=True)
+    ubicacion = models.TextField()
+    detalles_evento = models.TextField()
+    cupo = models.IntegerField()
     fecha_inicio_evento = models.DateTimeField(default=django.utils.timezone.now,null=False)
     fecha_fin_evento = models.DateTimeField(default=django.utils.timezone.now,null=False)
+
+    #control fieleds
+    created = models.DateTimeField(auto_now_add = True)
+    edited = models.DateTimeField(auto_now = True)
 
     def __str__(self):
         return self.nombre_evento
