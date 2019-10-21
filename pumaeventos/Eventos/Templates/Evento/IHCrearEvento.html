@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="{% static 'Evento/css/crea_evento.css' %}">
+<!--Falta agregar el href para que regrese a la pagina -->
+<a href="{% url 'Eventos:index' %}">Pagina Principal</a>
+<div id="crear_evento" class="center">
+    <form method="post" enctype="multipart/form-data">
+        <!-- {{ form.as_ul }} -->
+        <label>Organizador</label><br>
+        <input type="text" name="Organizador" required><br>
+        <label>Evento</label><br>
+        <input type="text" name="Nombre del evento" required><br>
+        <label>Ubicacion</label><br>
+        <input type="text" name="Ubicacion del evento" required><br>
+        <label>Detalles</label><br>
+        <textarea name="Detalles del evento" required></textarea><br>
+        <label>Cupo</label><br>
+        <input type="number" name="Cupo maximo" required><br>
+        <label>Inicio</label><br>
+        <input type="date" name="Hora de inicio" required>
+        <input type="time" name="Hora de inicio" required><br>
+        <label>Fin</label><br>
+        <input type="date" name="Hora de Finalizacion" required>
+        <input type="time" name="Hora de inicio" required><br>
+        <input type="submit" value="Crear">
+    </form>
+</div>

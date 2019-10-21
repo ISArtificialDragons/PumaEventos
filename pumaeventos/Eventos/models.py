@@ -26,6 +26,11 @@ class Evento(models.Model):
     cupo = models.IntegerField()
     fecha_inicio_evento = models.DateTimeField(default=django.utils.timezone.now,null=False)
     fecha_fin_evento = models.DateTimeField(default=django.utils.timezone.now,null=False)
+    hora_inicio_evento = models.TimeField(default=django.utils.timezone.now,null=False)
+    hora_fin_evento = models.TimeField(default=django.utils.timezone.now,null=False)
+
+    class Meta:
+        ordering = ['nombre_evento']
 
     #control fieleds
     created = models.DateTimeField(auto_now_add = True)
