@@ -1,9 +1,23 @@
 from django import forms
 
-from django.contrib.auth.forms import UserCreationForm
+
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
 from .models import Usuario
 
-class UsuarioForm(forms.ModelForm):
+
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(max_length=140, required=True)
+    last_name = forms.CharField(max_length=140, required=False)
+    email = forms.EmailField(required=True)
+
     class Meta:
-        model = Usuario
-        fields = ['nombre_usuario','correo_usuario','contraseña_usuario']
+        model = User
+        fields = (
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'password1',
+            'password2',
+        )

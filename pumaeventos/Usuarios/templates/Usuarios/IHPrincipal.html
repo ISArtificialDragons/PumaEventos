@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Bievenido{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <h1>Hola {{ user.username }} has iniciado exitosamente </h1>
+        <image src="https://images.squarespace-cdn.com/content/v1/57dea572579fb3ea46810d43/1477314270402-UH9AW4R3N11WRA4TEN3D/ke17ZwdGBToddI8pDm48kHuvQ-NAv5HN0q1pBwYMX4UUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKc-tvttev3SKGfatJ2p3DmsJArwEhWr6-MQta8EFO0650D9NTha-QKWaijXzq1V1dG/Background+B+1000x300.png?format=2500w>" width="1800" height="200">
+
+      <h1 style="color: #5e9ca0; background-color: #D5F607;">
+
+        <br/>
+        <a title="Iniciar_Sesion" href="inicia-sesion/">Ingresar Sesion</a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+        <form action="ejemplo.php" method="get">
+          <p>Buscar Evento: <input type="text" name="busqueda" size="40"></p>
+          </form>
+        <a title="Registro" href="registrate/">Registrarse</a></h1>
+        <p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+        <table class="Tabla_Eventos" style="border: 1px solid #000;height: 320px; width: 580px;" >
+        <thead>
+        <tr>
+        	<tr style= "background-color: #0D3AF1">
+        <td style="width: 130px;">Evento</td>
+        <td style="width: 180px;">Fecha</td>
+        <td style="width: 248px;">Ubicacion</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td style="width: 130px; border: 1px solid #000">nombre evento1</td>
+        <td style="width: 180px; border: 1px solid #000">fecha1</td>
+        <td style="width: 248px; border: 1px solid #000">lugar1</td>
+        </tr>
+        <tr>
+        <td style="width: 130px; border: 1px solid #000">nombre evento2</td>
+        <td style="width: 180px; border: 1px solid #000">fecha2</td>
+        <td style="width: 248px; border: 1px solid #000">lugar2</td>
+        </tr>
+        <tr>
+        <td style="width: 130px; border: 1px solid #000">nombre evento13</td>
+        <td style="width: 180px; border: 1px solid #000">fecha3</td>
+        <td style="width: 248px; border: 1px solid #000">lugar3</td>
+        </tr>
+        </tbody>
+        </table>
+        <p><strong>&nbsp;</strong></p>
+        <p><strong>&nbsp;</strong></p>
+
+    {% else %}
+        <a href="registrate/">Registrate en el sistema para poder ingresar </a>
+    {% endif %}
+
+{% endblock content %}
+
+{% if user.is_authenticated %}
+        <h1>Hola {{ user.username }}</h1>
+        <a href="cerrar-sesion">Cerrar sesión</a>
+    {% else %}
+        <a href="registrate/">Registrate</a>
+        <a href="inicia-sesion/">Iniciar sesión</a>
+    {% endif %}

@@ -1,41 +1,34 @@
 from django.shortcuts import render, redirect
-from django.core.exceptions import ObjectDoesNotExist
-from .forms import UsuarioForm
+
+from django.contrib.auth import login, authenticate
+from django.views.generic import CreateView, TemplateView
 from .models import Usuario
-
-# Create your views here.
-def Home(request):
-    return render(request, 'Usuarios/IHPrincipal.html')
+from .forms import SignUpForm
+from django.contrib.auth.views import LoginView, LogoutView
 
 
-def crear_Usuario(request):
-    if request.method == 'POST':
-        usuario_form = UsuarioForm(request.POST)
-        if usuario_form.is_valid():
-            usuario_form.save()
-            return redirect('/IHPrincipal')
-    else:
-        usuario_form = UsuarioForm()
-    return render(request, 'Usuarios/IHRegistrarse.html', {'usuario_form': usuario_form})
+class SignUpView(CreateView):
+    model = Usuario
+    form_class = SignUpForm
+
+    def form_valid(self, form):
+        '''
+        '''
+        form.save()
+        usuario = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password1')
+        usuario = authenticate(username=usuario, password=password)
+        login(self.request, usuario)
+        return redirect('/inicia-sesion')
 
 
-def listaUsuarios(request):
-    Usuarios = Usuario.objects.all()
-    return render(request,'Usuarios/IHListaUsuarios.html',{'Usuarios':Usuarios})
+class BienvenidaView(TemplateView):
+    template_name = 'Usuarios/IHPrincipal.html'
 
 
-def editarUsuario(request, id_usuario):
-    usuario_form = None
-    error = None
-    try:
-        usuario = Usuario.objects.get(id_usuario = id_usuario)
-        if request.method == 'GET':
-            usuario_form = UsuarioForm(instance = usuario)
-        else:
-            usuario_form = UsuarioForm(request.POST, instance = usuario)
-            if usuario_form.is_valid():
-                usuario_form.save()
-            return redirect('/IHPrincipal')
-    except ObjectDoesNotExist as e:
-        error = e
-    return render(request, 'Usuarios/IHRegistrarse.html', {'usuario_form': usuario_form, 'error':error})
+class SignInView(LoginView):
+    template_name = 'Usuarios/IHinicia_sesion.html'
+
+
+class SignOutView(LogoutView):
+    pass
