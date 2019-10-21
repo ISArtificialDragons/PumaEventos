@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #Aplicaciones
+    #Local apps 
     'Home',
     'Eventos',
     'Usuarios',
@@ -82,11 +82,17 @@ WSGI_APPLICATION = 'pumaeventos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USERNAME'),
-        'PASSWORD': os.environ.get('DB_USER_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': 'deqyrkii',
+        'USER': 'deqyrkii',
+        'PASSWORD': 'GEp2e_WxBwicaqsoz356VPEq0QWWHORH',
+        'HOST': 'salt.db.elephantsql.com',
+        'PORT': '5432',
+
+        #'NAME': os.environ.get('DB_NAME'),
+        #'USER': os.environ.get('DB_USERNAME'),
+        #'PASSWORD': os.environ.get('DB_USER_PASSWORD'),
+        #'HOST': 'localhost',
+        #'PORT': '',
     }
 }
 
