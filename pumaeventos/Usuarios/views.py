@@ -14,7 +14,12 @@ class SignUpView(CreateView):
     def form_valid(self, form):
         '''
         '''
-        form.save()
+        user = form.save()
+        nuevo_usuario = Usuario(
+            usuario=user,
+            nombre_usuario=user.username
+        )
+        nuevo_usuario.save()
         usuario = form.cleaned_data.get('username')
         password = form.cleaned_data.get('password1')
         usuario = authenticate(username=usuario, password=password)

@@ -11,7 +11,7 @@ class Usuario(models.Model):
     bio = models.CharField(max_length=255, blank=True)
     web = models.URLField(blank=True)
     id_evento = models.CharField(max_length=100)
-    nombre_usuario = models.CharField(max_length=150)
+    nombre_usuario = models.CharField(max_length=150, unique=True)
     contraseña_usuario = models.CharField(max_length=40)
     confirmacion_usuario = models.BooleanField(default=False)
     statf = models.BooleanField(default=False)
@@ -29,4 +29,5 @@ class Usuario(models.Model):
 @receiver(post_save, sender=User)
 def crear_usuario_perfil(sender, instance, created, **kwargs):
     if created:
-        Usuario.objects.create(usuario=instance)
+        print("post_save")
+        #Usuario.objects.create(usuario=instance)
