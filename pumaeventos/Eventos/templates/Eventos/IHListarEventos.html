@@ -1,0 +1,45 @@
+{% extends 'Usuarios/IHPrincipal.html' %}
+
+{% block title %}Lista de Eventos{% endblock %}
+
+{% block body %}
+
+  {% if eventos %}
+      <div class="card">
+          <div class="card-header">
+              <strong class="card-title">Listado de Eventos</strong>
+          </div>
+          <div class="table-stats order-table ov-h">
+              <table class="table">
+                  <thead>
+                      <tr>
+                        <th>nombre_evento</th>
+                        <th>ubicacion</th>
+                        <th>detalles_evento</th>
+                        <th>cupo</th>
+                        <th>fecha_inicio_evento</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    {% for evento in eventos %}
+                      <tr>
+                        <td>{{ evento.nombre_evento }}</td>
+                        <td>{{ evento.ubicacion }}</td>
+                        <td>{{ evento.detalles_evento }}</td>
+                        <td>{{ evento.cupo }}</td>
+                        <td>{{ evento.fecha_inicio_evento }}</td>
+                        <td>
+                          <a href="" class="btn btn-primary">Editar</a>
+                          <a href="" class="btn btn-danger">Eliminar</a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      {% else %}
+        <h1>No existen eventos registrados</h1>
+      {% endif %}
+
+{% endblock body %}

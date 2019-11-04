@@ -1,0 +1,43 @@
+{% extends 'Usuarios/IHPrincipal.html' %}
+
+{% block title %}Lista de Eventos{% endblock %}
+
+{% block body %}
+<form method="POST">
+  {% csrf_token %}
+  {% if error %}
+    <h2>{{ error }}</h2>
+  {% else %}
+      <div class="card">
+          <div class="card-header">
+              <strong>Crear de Eventos</strong>
+          </div>
+          <div class="card-body card-block">
+              <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+                  <div class="row form-group">
+                      <div class="col col-md-3">{{ form.nombre_evento.label }}</div>
+                      <div class="col-12 col-md-9">{{ form.nombre_evento }}</div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">{{ form.ubicacion.label }}</div>
+                      <div class="col-12 col-md-9">{{ form.ubicacion }}</div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">{{ form.detalles_evento.label }}</div>
+                      <div class="col-12 col-md-9">{{ form.detalles_evento }}</div>
+                  </div>
+                  <div class="row form-group">
+                      <div class="col col-md-3">{{ form.cupo.label }}</div>
+                      <div class="col-12 col-md-9">{{ form.cupo }}</div>
+                  </div>
+                  <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Registrar</button>
+                      <button type="reset" class="btn btn-danger">Cancelar</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  {% endif %}
+</form>
+
+{% endblock body %}
