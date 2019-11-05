@@ -3,7 +3,7 @@
 {% block title %}Lista de Eventos{% endblock %}
 
 {% block body %}
-<form method="POST">
+<form action="" method="POST">
   {% csrf_token %}
   {% if error %}
     <h2>{{ error }}</h2>
