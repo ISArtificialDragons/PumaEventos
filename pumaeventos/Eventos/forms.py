@@ -7,4 +7,4 @@ from .models import Evento
 class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
-        fields = ('nombre_evento', 'ubicacion', 'detalles_evento','cupo')
+        fields = ('nombre_evento', 'ubicacion', 'detalles_evento','cupo', 'fecha_inicio_evento', 'fecha_fin_evento')

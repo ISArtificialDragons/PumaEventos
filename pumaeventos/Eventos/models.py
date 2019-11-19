@@ -24,11 +24,9 @@ class Evento(models.Model):
     ubicacion = models.TextField()
     detalles_evento = models.TextField()
     cupo = models.IntegerField()
-    fecha_inicio_evento = models.DateTimeField(default=django.utils.timezone.now,null=False)
-    fecha_fin_evento = models.DateTimeField(default=django.utils.timezone.now,null=False)
+    fecha_inicio_evento = models.DateField(default=django.utils.timezone.now,null=False)
+    fecha_fin_evento = models.DateField(default=django.utils.timezone.now,null=False)
 
-    class Meta:
-        ordering = ['nombre_evento']
 
     def __str__(self):
         return self.nombre_evento

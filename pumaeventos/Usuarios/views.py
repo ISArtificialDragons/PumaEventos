@@ -3,13 +3,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.views.generic import CreateView, TemplateView
 from .models import Usuario
-from .forms import SignUpForm
+from .forms import RegistroForm
 from django.contrib.auth.views import LoginView, LogoutView
 
 
 class SignUpView(CreateView):
     model = Usuario
-    form_class = SignUpForm
+    form_class = RegistroForm
 
     def form_valid(self, form):
         '''

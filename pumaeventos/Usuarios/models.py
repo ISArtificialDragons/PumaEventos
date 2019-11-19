@@ -12,13 +12,14 @@ class Usuario(models.Model):
     web = models.URLField(blank=True)
     id_evento = models.CharField(max_length=100)
     nombre_usuario = models.CharField(max_length=150, unique=True)
+    correo_usuario = models.EmailField(max_length=150, unique=True)
     contraseña_usuario = models.CharField(max_length=40)
     confirmacion_usuario = models.BooleanField(default=False)
     statf = models.BooleanField(default=False)
     sexo_usuario = models.CharField(max_length=200)
     pasatiempos_usuario = models.TextField(help_text='Redacta tus pasatiempos')
     entidad_academica_usuario = models.CharField(max_length=100)
-    foto_usuario = models.TextField(help_text='se usara ImageField')
+    foto_usuario = models.ImageField(upload_to='posts', null=True)
 
 
     # Python 3
