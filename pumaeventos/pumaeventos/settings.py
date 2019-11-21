@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'Home',
     'Eventos',
     'Usuarios',
+    'django_filters',
+    'bootstrapform',
 ]
 
 MIDDLEWARE = [

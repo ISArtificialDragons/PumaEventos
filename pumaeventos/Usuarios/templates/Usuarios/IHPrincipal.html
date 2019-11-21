@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load bootstrap %}
 <!Doctype html>
 <html class="no-js" lang="es">
 <head>
@@ -18,6 +19,22 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
+
+<div id="right-panel" class="right-panel">
+  <form method="GET">
+     {{filter.form.bootstrap }}
+    <input name="context" placeholder="Evento" id="buscador">
+    <a href="" class="btn btn-success btn-flat m-b-30 m-t-30">Buscar</button>
+  </form>
+<ul>
+  {% for evento in filter.qs %}
+    <li>
+      <a {{ evento.nombre_evento }} </a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+
 
 <body>
     <!-- Left Panel -->

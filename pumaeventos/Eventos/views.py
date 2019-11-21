@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 
 from .forms import EventoForm
 from .models import Evento
-
+from .filters import EventosFiltro
 
 # Create your views here.
 
@@ -30,3 +30,8 @@ class ListarEventos(ListView):
     form_class = EventoForm
     template_name = "Eventos/IHListarEventos.html"
     context_object_name = 'eventos'
+
+def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    content['filter'] = EventosFiltro(self.request.GET, queryset=self.get_queryset())
+    return render(request, 'Eventos/IHListarEventos', {'eventos': eventos})
