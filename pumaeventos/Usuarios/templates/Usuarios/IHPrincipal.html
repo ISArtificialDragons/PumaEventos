@@ -19,24 +19,26 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
-
-<div id="right-panel" class="right-panel">
-  <form method="GET">
-     {{filter.form.bootstrap }}
-    <input name="context" placeholder="Evento" id="buscador">
-    <a href="" class="btn btn-success btn-flat m-b-30 m-t-30">Buscar</button>
-  </form>
-<ul>
-  {% for evento in filter.qs %}
-    <li>
-      <a {{ evento.nombre_evento }} </a>
-    </li>
-    {% endfor %}
-</ul>
-</div>
-
-
 <body>
+<div  class="right-panel">
+  <form action="." method="GET">
+    <label for="q">Busqueda: </label>
+    <input type="text" name="q" value="{{ query|escape }}">
+    <input type="submit" value="Buscar">
+  </form>
+  {% if query %}
+    <h2>Resultados para "{{ query|escape }}":</h2>
+    {% if results %}
+      <ul>
+      {% for evento in results %}
+        <li>{{ evento|escape }}</li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p>No se encontraron eventos</p>
+    {% endif %}
+  {% endif %}
+</div>
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">

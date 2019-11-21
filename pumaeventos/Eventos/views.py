@@ -6,7 +6,9 @@ from django.urls import reverse_lazy
 
 from .forms import EventoForm
 from .models import Evento
-from .filters import EventosFiltro
+from django.db.models import Q
+from django.shortcuts import render_to_response
+#from .filters import EventosFiltro
 
 # Create your views here.
 
@@ -31,7 +33,23 @@ class ListarEventos(ListView):
     template_name = "Eventos/IHListarEventos.html"
     context_object_name = 'eventos'
 
-def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    content['filter'] = EventosFiltro(self.request.GET, queryset=self.get_queryset())
-    return render(request, 'Eventos/IHListarEventos', {'eventos': eventos})
+class Busqueda(ListView):
+    model = Evento
+    form_class = EventoForm
+    template_name = "Eventos/IHBusqueda.html"
+    context_object_name = 'eventos'
+
+    def Busqueda(request):
+        query = request.GET.get('q', '')
+        if query:
+            qset = (
+                Q(nombre_evento__icontains=query) |
+                Q(detalles_evento__icontains=query)
+            )
+            results = Evento.objects.filter(qset).distinct()
+        else:
+            results = []
+        return render_to_response("Eventos/IHPrincipal.html", {
+            "results": results,
+            "query": query
+        })
